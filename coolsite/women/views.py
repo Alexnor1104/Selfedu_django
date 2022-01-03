@@ -60,9 +60,9 @@ def show_post(request, post_slug):
 
 
 def show_category(request, cat_slug):
-    posts = Women.objects.filter(slug=cat_slug)
+    category = Women.objects.filter(slug=cat_slug)
 
-    context = {'posts': posts,
+    context = {'category': category,
                'menu': menu,
                'title': 'Главная страница',
                'cat_selected': cat_slug,
