@@ -2,7 +2,7 @@ FROM python:3.10-alpine
 
 WORKDIR /coolsite
 
-COPY . /coolsite/
+COPY . .
 
 RUN  pip install -r requirements.txt
 
