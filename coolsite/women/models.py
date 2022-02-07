@@ -40,4 +40,4 @@ class Category(models.Model):
         ordering = ['id']
 
     def get_absolute_url(self):
-        return reverse('category', kwargs={'cat_slug': self.slug})
+        return reverse('category', kwargs={'slug': self.slug})

@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views import View
 
 from .forms import AddPostForm
 from .models import *
@@ -53,18 +54,20 @@ def show_post(request, post_slug):
         'post': post,
         'menu': menu,
         'title': post.title,
-        'cat_selected': post.cat_id,
+        'cat_selected': post.slug,
     }
 
     return render(request, 'women/post.html', context=context)
 
 
-def show_category(request, cat_slug):
-    category = Women.objects.filter(slug=cat_slug)
+class ShowCat(View):
 
-    context = {'category': category,
-               'menu': menu,
-               'title': 'Главная страница',
-               'cat_selected': cat_slug,
-               }
-    return render(request, 'women/index.html', context=context)
+    def get(self, request, slug):
+        category = Women.objects.filter(slug=slug)
+
+        context = {'category': category,
+                   'menu': menu,
+                   'title': 'Отображение по рубрикам',
+                   'cat_selected': category,
+                   }
+        return render(request, 'women/index.html', context=context)
