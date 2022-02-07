@@ -1,8 +1,8 @@
-FROM python:3.10-alpine
+FROM python
 
 WORKDIR /coolsite
 
-COPY . .
+COPY . /coolsite
 
 RUN  pip install -r requirements.txt
 
